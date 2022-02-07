@@ -3,8 +3,9 @@
 function division(number, dividedBy) {
     if (number == 0 || dividedBy == 0) {
         return 0;
+    } else if (number === dividedBy) {
+        return 1;
     } else {
-
         return (number / dividedBy);
     }
 }
@@ -16,10 +17,11 @@ pow(2,4) = 16
 
 
 function pow(x, n) {
-    if (n == 0)
+    if (n == 0) {
         return 1;
-    else
+    } else {
         return x * pow(x, n - 1);
+    }
 }
 
 /* The Fibonacci Series is a numeric series starting with the integers 0 and 1. In this series,
@@ -32,8 +34,11 @@ Write a function that take n as parameter and return the nth element in the Fibo
 Example: n = 4 ==> 3, n= 0 ==> 0, n = 3 ==> 2 */
 
 function fibonacci(n) {
-    // Write you logic here.
-    return;
+    if (n == 1 || n == 0) {
+        return n;
+    } else {
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
 }
 
 /* Optional 
