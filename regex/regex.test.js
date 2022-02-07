@@ -6,15 +6,13 @@
 characters (no numbers and symbols) and it should end with capital A else return false */
 
 function capitalA(s) {
-    let contLower = s.match(/[a-z]/g);
-    let contUpper = s.match(/[A-Z]/g);
-    let contSymbot = s.match(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/g);
-    let isNumber = s.match(/\d/g);
-    let endCapA = s.match(/A$/g);
+    let cont_Lower_Upper = s.match(/(|[a-z]|[A-Z])/g);
+    let cont_No_Symbot = s.match(/[!@#$%&()_*\-=\[\]{};':"\\|,.<>\/?]+|\d/g);
+    let endCapA = s.endsWith('A');
 
 
 
-    if ((contLower != null) && (contUpper != null) && (contSymbot == null) && (isNumber == null) && (contSymbot == null)(endCapA == true)) {
+    if ((cont_Lower_Upper != null) && (cont_No_Symbot == null) && (endCapA == true)) {
 
         return true;
 
@@ -29,7 +27,7 @@ function capitalA(s) {
 which end with io (example@example.io) */
 
 function ioEmail(email) {
-    let exEmail = email.match(/^[\w]+@([\w-]+.$)+io$/g);
+    let exEmail = email.match(/^[\w]+@([\w-]+\.)+[\w-]{2,4}$/g);
     if (exEmail != null) {
         return true;
     } else {
@@ -44,7 +42,12 @@ required extention are jpg, jpeg and png.
 
 function imagesSearcher(text) {
     let arr = [];
-    // Add your logic.
+    let words = text.split(" ");
+    words.forEach(obj => {
+        if (obj.match(/([a-zA-Z0-9\s_\\.\-\(\):])+(.jpg|.jpeg|.png)$/g) != null) {
+            arr.push(obj);
+        }
+    });
     return arr
 }
 
